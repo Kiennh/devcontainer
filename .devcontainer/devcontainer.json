@@ -24,9 +24,6 @@
   },
   "forwardPorts": [8080, 5173, 8000, 54112, 51096, 80],
   "remoteUser": "vscode",
-  "features": {
-    "docker-in-docker": "latest"
-  },
   "mounts": [
     "source=/tmp,target=/tmp,type=bind,consistency=cached",
   ]
