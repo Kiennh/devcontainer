@@ -30,14 +30,8 @@
     "docker-from-docker": "latest"
   },
   "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE},target=/Users/kien,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind",
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/Projects/vscode/.gradle,target=/home/vscode/.gradle,type=bind,consistency=cached",    
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/Projects/vscode/.m2,target=/home/vscode/.m2,type=bind,consistency=cached",    
-    "source=/Users/kien/Applications/wordpress,target=/workspaces/wordpress,type=bind,consistency=cached",
     "source=/tmp,target=/tmp,type=bind,consistency=cached",
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/Projects/vscode/nginx,target=/etc/nginx,type=bind,consistency=cached",
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/Projects/vscode/php,target=/etc/php,type=bind,consistency=cached"
   ],
   "postStartCommand": "bash /Users/kien/Projects/vscode/init.sh"
 }
