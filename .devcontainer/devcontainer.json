@@ -9,7 +9,6 @@
       "GO_VERSION":"1.20.4"
     }
   },
-  "runArgs": ["--name", "vscode-dev", "--link", "local_mysql:mysql"],
   "customizations": {
     "vscode": {
       "settings": {
@@ -25,9 +24,10 @@
   },
   "forwardPorts": [8080, 5173, 8000, 54112, 51096, 80],
   "remoteUser": "vscode",
+  "features": {
+    "docker-in-docker": "latest"
+  },
   "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind",
     "source=/tmp,target=/tmp,type=bind,consistency=cached",
-  ],
-  "postStartCommand": "bash /Users/kien/Projects/vscode/init.sh"
+  ]
 }
