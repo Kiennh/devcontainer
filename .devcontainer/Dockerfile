@@ -1,7 +1,7 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/java/.devcontainer/base.Dockerfile
 
 # [Choice] Java version (use -bullseye variants on local arm64/Apple Silicon): 17, 17-bullseye, 17-buster
-ARG VARIANT="17"
+ARG VARIANT="17-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/java:0-${VARIANT}
 ARG GO_VERSION="1.20.4" # You can modify this version as needed
 
@@ -23,7 +23,7 @@ COPY library-scripts/maven-debian.sh /tmp/library-scripts/
 RUN mkdir -p mkdir -p /usr/local/sdkman/candidates/java/ && ln -s /usr/lib/jvm/msopenjdk-current /usr/local/sdkman/candidates/java/current
 ENV JAVA_HOME=/usr/lib/jvm/msopenjdk-current
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
-ARG NODE_VERSION="18"
+ARG NODE_VERSION="18.19.1"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi \
     && apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends vim ffmpeg \
