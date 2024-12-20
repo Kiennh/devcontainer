@@ -1,8 +1,8 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/java/.devcontainer/base.Dockerfile
 
-# [Choice] Java version (use -bullseye variants on local arm64/Apple Silicon): 17, 17-bullseye, 17-buster
+# [Choice] Java version (use -bullseye variants on local amd64/Apple Silicon): 17, 17-bullseye, 17-buster
 ARG VARIANT="17-bullseye"
-FROM mcr.microsoft.com/vscode/devcontainers/java:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/java:0-17-bullseye
 ARG GO_VERSION="1.20.4" # You can modify this version as needed
 
 ENV GOPATH=/workspaces/go
@@ -24,16 +24,16 @@ RUN mkdir -p mkdir -p /usr/local/sdkman/candidates/java/ && ln -s /usr/lib/jvm/m
 ENV JAVA_HOME=/usr/lib/jvm/msopenjdk-current
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 ARG NODE_VERSION="18.19.1"
-RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi \
+RUN if [ "18.19.1" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install 18.19.1 2>&1"; fi \
     && apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends vim ffmpeg \
     && apt-get install -y wget php telnet iputils-ping default-mysql-client \
         php7.4-fpm php7.4-mysql   php7.4-gd    php7.4-curl php7.4-gmp php7.4-json  \
         php7.4-mbstring php7.4-opcache php7.4-readline php7.4-xml php7.4-xmlrpc \
         php7.4-zip    nginx    php-igbinary php-redis php-mongodb php-soap \
-    && wget https://golang.org/dl/go${GO_VERSION}.linux-arm64.tar.gz \
-    && tar -C /usr/local -xzf go${GO_VERSION}.linux-arm64.tar.gz \
-    && rm go${GO_VERSION}.linux-arm64.tar.gz \
+    && wget https://golang.org/dl/go1.20.4.linux-amd64.tar.gz \
+    && tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz \
+    && rm go1.20.4.linux-amd64.tar.gz \
     && ln -s /usr/local/go/bin/go /usr/local/bin/go \
     && ln -s /usr/local/go/bin/gofmt /usr/local/bin/gofmt \
     && apt-get clean \
