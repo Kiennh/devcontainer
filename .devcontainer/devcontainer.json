@@ -2,29 +2,7 @@
   "name": "AIO",
   "build": {
     "dockerfile": "Dockerfile",
-    "context": ".",
-    "args": {
-      "VARIANT": "17-bullseye",
-      "NODE_VERSION": "18.19.1",
-      "GO_VERSION":"1.20.4"
-    }
+    "context": "."
   },
-  "customizations": {
-    "vscode": {
-      "settings": {
-        "java.jdt.ls.java.home": "/docker-java-home"
-      },
-      "extensions": [
-        "vscjava.vscode-java-pack",
-        "pivotal.vscode-boot-dev-pack",
-        "esbenp.prettier-vscode",
-        "DEVSENSE.phptools-vscode"
-      ]
-    }
-  },
-  "forwardPorts": [8080, 5173, 8000, 54112, 51096, 80],
-  "remoteUser": "vscode",
-  "mounts": [
-    "source=/tmp,target=/tmp,type=bind,consistency=cached",
-  ]
+  "postStartCommand":"bash init.sh"
 }
