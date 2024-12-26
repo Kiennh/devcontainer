@@ -42,7 +42,7 @@ RUN if [ "18.19.1" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/sh
     && bash /tmp/library-scripts/maven-debian.sh "latest" "${SDKMAN_DIR}" \
     && npm install -g generator-jhipster
 
-RUN sudo mkdir -p /var/run/php  &&  sudo chown -R vscode.vscode /var/log/nginx /run /var/run/php 
+COPY init.sh /init.sh
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1

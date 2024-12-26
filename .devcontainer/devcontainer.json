@@ -4,5 +4,5 @@
     "dockerfile": "Dockerfile",
     "context": "."
   },
-  "postStartCommand":"bash init.sh"
+  "postStartCommand":"bash /init.sh"
 }
